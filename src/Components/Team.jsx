@@ -1,13 +1,15 @@
-import { GiPartyFlags, GiGlassCelebration, GiPartyHat } from "react-icons/gi";
-import { BiHappyBeaming } from "react-icons/bi";
+import { BiDonateHeart } from "react-icons/bi";
+import { LiaPlaceOfWorshipSolid } from "react-icons/lia";
+import { SiHomeadvisor } from "react-icons/si";
+import { HiAcademicCap } from "react-icons/hi";
 
 const Team = () => {
   return (
     <div>
-      <div className="pt-14 space-y-10 bg-neutral-900">
-        <div className="text-center space-y-10 text-white ">
-          <p className="text-2xl font-bold">Meet our Team</p>
-          <h2 className="text-5xl font-extrabold">
+      <div className="pt-14 space-y-6 bg-neutral-900">
+        <div className="text-center space-y-10 text-white mx-6">
+          <p className="text-3xl font-bold ">Meet our Team</p>
+          <h2 className="text-5xl font-extrabold text-orange-300">
             Awesome guys behind our <br /> charity activities
           </h2>
         </div>
@@ -17,22 +19,20 @@ const Team = () => {
               <div className="h-96 w-72">
                 <img
                   className="h-full w-full object-cover group-hover:scale-125 transition-transform duration-500"
-                  src="https://i.ibb.co/0hk0Gp1/al-elmes-ULHx-Wq8reao-unsplash.jpg"
+                  src="https://i.ibb.co/yBtzPQt/meysam-jarahkar-LI7j-B1925j0-unsplash.jpg"
                   alt=""
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
               <div className="absolute inset-0  flex flex-col items-center justify-center px-9 text-center translate-y-[60%] group-hover:translate-y-0 transition-all">
                 <div>
-                  <GiPartyFlags className="text-7xl text-yellow-200"></GiPartyFlags>
+                  <LiaPlaceOfWorshipSolid className="text-5xl text-yellow-200"></LiaPlaceOfWorshipSolid>
                 </div>
                 <h1 className="text-3xl font-bold text-[#D3959B]">
-                  Celebration
+                  Donald John
                 </h1>
-                <p className="text-lg italic text-whitemb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[#b8a6c1] mt-14">
-                  From a sweet 16 pary to a 50th birthday celebration…You can
-                  enjoy and eat food. and can spend time with your loved
-                  ones.many things can be considered special occasions.
+                <p className="text-xl italic text-whitemb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[#b8a6c1] mt-28">
+                  Founder And CEO of Reduce Waste Together Charity
                 </p>
               </div>
             </div>
@@ -40,20 +40,20 @@ const Team = () => {
               <div className="h-96 w-72">
                 <img
                   className="h-full w-full object-cover group-hover:scale-125 transition-transform duration-500"
-                  src="https://i.ibb.co/z2dy9WH/ray-hennessy-gd-Tx-VSAE5sk-unsplash.jpg"
+                  src="https://i.ibb.co/tHLTDWt/lethicia-matos-CSh-h-NHc3-Y8-unsplash.jpg"
                   alt=""
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
               <div className="absolute inset-0  flex flex-col items-center justify-center px-9 text-center translate-y-[60%] group-hover:translate-y-0 transition-all">
                 <div>
-                  <GiGlassCelebration className="text-7xl text-yellow-200"></GiGlassCelebration>
+                  <BiDonateHeart className="text-5xl text-yellow-200"></BiDonateHeart>
                 </div>
-                <h1 className="text-3xl font-bold text-[#D3959B]">Occasion</h1>
-                <p className="text-lg italic text-whitemb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[#a590af] mt-14">
-                  Birthdays, Anniversaries, these include work anniversaries.
-                  Also a death with a funeral can be a special occasion
-                  weddings.Day Events. We have a variety
+                <h1 className="text-3xl font-bold text-[#D3959B]">
+                  Phillips Dal
+                </h1>
+                <p className="text-xl italic text-whitemb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[#a590af] mt-36">
+                  Chef Executive of Reduce Waste Together Charity
                 </p>
               </div>
             </div>
@@ -61,20 +61,20 @@ const Team = () => {
               <div className="h-96 w-72">
                 <img
                   className="h-full w-full object-cover group-hover:scale-125 transition-transform duration-500"
-                  src="https://i.ibb.co/rFxFhcV/sam-mathews-w-Zj-Jx-Ox8-FPI-unsplash.jpg"
+                  src="https://i.ibb.co/Zx4kW6V/ana-nichita-BI91-Nrpp-E38-unsplash.jpg"
                   alt=""
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
               <div className="absolute inset-0  flex flex-col items-center justify-center px-9 text-center translate-y-[60%] group-hover:translate-y-0 transition-all">
                 <div>
-                  <GiPartyHat className="text-7xl text-yellow-200"></GiPartyHat>
+                  <SiHomeadvisor className="text-5xl text-yellow-200"></SiHomeadvisor>
                 </div>
-                <h1 className="text-3xl font-bold text-[#D3959B]">Party</h1>
-                <p className="text-lg italic text-whitemb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[#ab93b5] mt-14">
-                  Make your parties feel more alive by having the right number
-                  of guests. Research suggests the best group size is from five
-                  to nine.Party with friends and family
+                <h1 className="text-3xl font-bold text-[#D3959B]">
+                  Thomas Olsen
+                </h1>
+                <p className="text-lg italic text-whitemb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[#ab93b5] mt-36">
+                  Chef Advisor of Reduce Waste Together Charity
                 </p>
               </div>
             </div>
@@ -82,20 +82,20 @@ const Team = () => {
               <div className="h-96 w-72">
                 <img
                   className="h-full w-full object-cover group-hover:scale-125 transition-transform duration-500"
-                  src="https://i.ibb.co/2K0NJnR/nathan-dumlao-5-BB-at-DT4o-A-unsplash.jpg"
+                  src="https://i.ibb.co/qkxk422/arrul-lin-s-Yh-Uhse5u-T8-unsplash.jpg"
                   alt=""
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
               <div className="absolute inset-0  flex flex-col items-center justify-center px-9 text-center translate-y-[60%] group-hover:translate-y-0 transition-all">
                 <div>
-                  <BiHappyBeaming className="text-7xl text-yellow-200"></BiHappyBeaming>
+                  <HiAcademicCap className="text-5xl text-yellow-200"></HiAcademicCap>
                 </div>
-                <h1 className="text-3xl font-bold text-[#D3959B]">Wedding</h1>
-                <p className="text-lg italic text-whitemb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[#bfa4cc] mt-14">
-                  he system is designed to facilitate the arrangement and
-                  organization of weddings. It provides a centralized platform
-                  to manage various aspects of wedding planning
+                <h1 className="text-3xl font-bold text-[#D3959B]">
+                  James Alien
+                </h1>
+                <p className="text-lg italic text-whitemb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[#bfa4cc] mt-36">
+                  Advisor of Reduce Waste Together Charity
                 </p>
               </div>
             </div>

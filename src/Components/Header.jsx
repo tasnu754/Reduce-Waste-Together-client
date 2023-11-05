@@ -5,16 +5,16 @@ const Header = () => {
     <div className=" relative mt-10">
       <div className="banner w-full h-screen "></div>
       <div className="absolute top-0">
-        <div className="flex justify-center items-center h-screen w-1/2 mx-auto ">
+        <div className="flex justify-center items-center h-screen lg:w-1/2 mx-auto px-10">
           <div
             data-aos="fade-up"
             data-aos-duration="2000"
             className="text-white space-y-4 "
           >
-            <h2 className=" text-center text-5xl font-bold">
+            <h2 className=" text-center text-xl md:text-3xl lg:text-5xl font-bold">
               Let`s Be Involved <br /> With Helping Hands
             </h2>
-            <p className="text-2xl text-justify">
+            <p className="md:text-xl lg:text-2xl text-justify">
               A large number of the people will spend tonight hungry, not
               knowing where their next meal may come from. Despite significant
               progress by efforts to reduce poverty in the area, the price of

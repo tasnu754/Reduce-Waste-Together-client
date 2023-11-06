@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 const FeaturedFoods = () => {
     const [featuredFoods, setFeaturedFoods] = useState([]);
-    
   useEffect(() => {
     axios
       .get(`http://localhost:5000/api/availableFoods?sortField=foodQuantity&sortOrder=desc`)
@@ -25,9 +24,9 @@ const FeaturedFoods = () => {
         ))}
       </div>
       <div className="text-center my-10">
-        <Link to="/availableFoods">
+       { featuredFoods?.length > 6 &&  <Link to="/availableFoods">
           <button className="btn btn-outline btn-primary">Show All</button>
-        </Link>
+        </Link>}
       </div>
     </div>
   );

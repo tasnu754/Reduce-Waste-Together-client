@@ -1,17 +1,42 @@
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
+import { useContext, useState } from "react";
+import { AuthProvider } from "../../Auth/Authenticate";
 
 const Signin = () => {
+  const { login, goggleLogin } = useContext(AuthProvider);
+  const [error, setError] = useState(null);
 
     const handlesignin = (e) => {
-        // setError(null);
+        setError(null);
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const pass = form.password.value;
-        console.log(email,pass);
+      console.log(email, pass);
+      
+
+      login(email, pass)
+        .then((res) => {
+          const user = res.user;
+          console.log(user);
+           form.reset();
+        })
+        .catch((error) => {
+          setError(error.message);
+        });
   
-    }
+  }
+  
+  const handleGoogle = () => {
+    goggleLogin()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
 
     return (
       <div className=" flex justify-center min-h-screen items-center">
@@ -56,7 +81,7 @@ const Signin = () => {
                 required
               />
             </div>
-            {/* {error && <p className="text-red-500">{error}</p>} */}
+            {error && <p className="text-red-500">{error}</p>}
             <div className="flex items-strat">
               <div className="flex items-center">
                 <div className="flex items-center h-5">
@@ -82,7 +107,7 @@ const Signin = () => {
               </button>
             </div>
             <button
-            //   onClick={handleGoogle}
+              onClick={handleGoogle}
               className="mt-4 block w-full select-none rounded-lg bg-gradient-to-tr from-[#085078] to-[#85D8CE] py-3 px-6 text-center align-middle font-sans text-base font-bold uppercase text-white shadow-md shadow-[#85D8CE] transition-all hover:shadow-lg hover:shadow-[#085078] 40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none "
             >
               <FaGoogle className="inline text-blue-800 text-xl mr-4"></FaGoogle>{" "}

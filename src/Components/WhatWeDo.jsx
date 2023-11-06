@@ -6,7 +6,11 @@ import { MdFoodBank } from "react-icons/md";
 
 const WhatWeDo = () => {
   return (
-    <div className="w-full text-center py-14 space-y-10 px-6">
+    <div
+      data-aos="zoom-in"
+      data-aos-duration="2000"
+      className="w-full text-center py-14 space-y-10 px-6"
+    >
       <div className="space-y-6">
         <h3 className="text-2xl font-bold">What we do?</h3>
         <p className="text-4xl font-bold">
@@ -15,7 +19,7 @@ const WhatWeDo = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div className="flex items-center gap-6">
           <GiBowlOfRice className="text-9xl px-4 text-orange-400 border-r-2 border-orange-400"></GiBowlOfRice>
           <div className="text-left space-y-4">

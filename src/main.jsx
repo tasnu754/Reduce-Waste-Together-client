@@ -14,6 +14,8 @@ import AddFood from './Pages/PrivateRoutes/AddFood';
 import ManageMyFoods from './Pages/PrivateRoutes/ManageMyFoods';
 import MyFoodRequest from './Pages/PrivateRoutes/MyFoodRequest';
 import Signin from './Pages/PublicRoutes/Signin';
+import Authenticate from './Auth/Authenticate';
+import PrivateRoute from './Components/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -39,16 +41,28 @@ const router = createBrowserRouter([
       },
       {
         path: "/addFoods",
-        element: <AddFood></AddFood>,
+        element: (
+          <PrivateRoute>
+            <AddFood></AddFood>
+          </PrivateRoute>
+        ),
       },
 
       {
         path: "/manageMyFoods",
-        element: <ManageMyFoods></ManageMyFoods>,
+        element: (
+          <PrivateRoute>
+            <ManageMyFoods></ManageMyFoods>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myFoodsRequest",
-        element: <MyFoodRequest></MyFoodRequest>,
+        element: (
+          <PrivateRoute>
+            <MyFoodRequest></MyFoodRequest>
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -56,6 +70,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Authenticate>
+      <RouterProvider router={router} />
+    </Authenticate>
   </React.StrictMode>
 );

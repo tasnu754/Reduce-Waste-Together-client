@@ -98,7 +98,7 @@ const Footer = () => {
               <div className="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
                 <a
                   href="#"
-                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                  className="text-gray-500 hover:text-white dark:hover:text-white"
                 >
                   <svg
                     className="w-4 h-4"
@@ -117,7 +117,7 @@ const Footer = () => {
                 </a>
                 <a
                   href="#"
-                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                  className="text-gray-500 hover:text-white dark:hover:text-white"
                 >
                   <svg
                     className="w-4 h-4"
@@ -132,7 +132,7 @@ const Footer = () => {
                 </a>
                 <a
                   href="#"
-                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                  className="text-gray-500 hover:text-white dark:hover:text-white"
                 >
                   <svg
                     className="w-4 h-4"
@@ -151,7 +151,7 @@ const Footer = () => {
                 </a>
                 <a
                   href="#"
-                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                  className="text-gray-500 hover:text-white dark:hover:text-white"
                 >
                   <svg
                     className="w-4 h-4"
@@ -170,7 +170,7 @@ const Footer = () => {
                 </a>
                 <a
                   href="#"
-                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                  className="text-gray-500 hover:text-white dark:hover:text-white"
                 >
                   <svg
                     className="w-4 h-4"

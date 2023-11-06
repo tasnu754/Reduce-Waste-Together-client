@@ -1,16 +1,40 @@
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthProvider } from "../../Auth/Authenticate";
+
+// https://i.ibb.co/Tvt8Nhy/ashton-bingham-EQFt-Ez-JGERg-unsplash.jpg 
 
 const Register = () => {
+  const { register, ProfileUpdate } = useContext(AuthProvider);
+   const [error, setError] = useState(null);
 
     const handleRegister = (e) => {
-        // setError(null);
+        setError(null);
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
         const pic = form.photo.value;
         const email = form.email.value;
         const pass = form.password.value;
-        console.log(name, pic, email, pass);
+      console.log(name, pic, email, pass);
+      
+      register(email, pass)
+        .then((result) => {
+          const user = result.user;
+          console.log(user);
+          ProfileUpdate(name, pic)
+            .then(() => {
+              console.log("Updated");
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        })
+        .catch((error) => {
+          setError(error.message);
+        });
+
+      form.reset();
     }
     return (
       <div className=" flex justify-center min-h-screen items-center my-10">
@@ -88,7 +112,7 @@ const Register = () => {
                 required
               />
             </div>
-            {/* {error && <p className="text-red-600">{error}</p>} */}
+            {error && <p className="text-red-600">{error}</p>}
             <div className="flex items-strat">
               <div className="flex items-center">
                 <div className="flex items-center h-5">

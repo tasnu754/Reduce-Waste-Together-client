@@ -1,6 +1,16 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthProvider } from "../Auth/Authenticate";
 
 const Navbar = () => {
+  const { user, logout } = useContext(AuthProvider);
+
+  const handleSignout = () => {
+    logout()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+  
     const links = (
       <>
         <li>
@@ -23,36 +33,40 @@ const Navbar = () => {
             Available Foods
           </NavLink>{" "}
         </li>
-        <li>
-          <NavLink
-            to="/addFoods"
-            className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "active" : ""
-            }
-          >
-            Add Food
-          </NavLink>{" "}
-        </li>
-        <li>
-          <NavLink
-            to="/manageMyFoods"
-            className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "active" : ""
-            }
-          >
-            Manage My Foods
-          </NavLink>{" "}
-        </li>
-        <li>
-          <NavLink
-            to="/myFoodsRequest"
-            className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "active" : ""
-            }
-          >
-            My Food Request
-          </NavLink>{" "}
-        </li>
+        {user && (
+          <>
+            <li>
+              <NavLink
+                to="/addFoods"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "active" : ""
+                }
+              >
+                Add Food
+              </NavLink>{" "}
+            </li>
+            <li>
+              <NavLink
+                to="/manageMyFoods"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "active" : ""
+                }
+              >
+                Manage My Foods
+              </NavLink>{" "}
+            </li>
+            <li>
+              <NavLink
+                to="/myFoodsRequest"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "active" : ""
+                }
+              >
+                My Food Request
+              </NavLink>{" "}
+            </li>
+          </>
+        )}
         <li>
           <NavLink
             to="/register"
@@ -110,17 +124,38 @@ const Navbar = () => {
             </div>
           </div>
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal text-lg px-1 gap-2 font-semibold">{links}</ul>
+            <ul className="menu menu-horizontal text-lg px-1 gap-2 font-semibold">
+              {links}
+            </ul>
           </div>
           <div className="navbar-end">
-            <NavLink
-              to="/signin"
-              className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "active" : ""
-              }
-            >
-              <button className="btn rounded-sm text-lg font-semibold">Signin</button>
-            </NavLink>{" "}
+            {user ? (
+              <div className="md:flex justify-between items-center gap-4">
+                <p className=" text-xl inline">{user.displayName}</p>
+                <img
+                  className="w-10 h-10 rounded-full inline ml-4"
+                  src={user.photoURL}
+                  alt=""
+                />
+                <button
+                  onClick={handleSignout}
+                  className="btn btn-neutral rounded-sm text-lg font-semibold"
+                >
+                  Signout
+                </button>
+              </div>
+            ) : (
+              <NavLink
+                to="/signin"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "active" : ""
+                }
+              >
+                <button className="btn btn-neutral rounded-sm text-lg font-semibold">
+                  Signin
+                </button>
+              </NavLink>
+            )}
           </div>
         </div>
       </div>

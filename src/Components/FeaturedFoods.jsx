@@ -19,8 +19,7 @@ const FeaturedFoods = () => {
   }, []);
   return (
     <div className="w-[90%] mx-auto py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      
-      {featuredFoods?.map((featuredFood, idx) => (
+      {featuredFoods?.slice(0, 6).map((featuredFood, idx) => (
         <FeaturedCards key={idx} featuredFood={featuredFood}></FeaturedCards>
       ))}
     </div>

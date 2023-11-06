@@ -1,14 +1,16 @@
+import FeaturedFoods from "./FeaturedFoods";
 import Header from "./Header";
 import Team from "./Team";
 import WhatWeDo from "./WhatWeDo";
 
 const Home = () => {
     return (
-        <div>
-            <Header></Header>
-            <Team></Team>
-            <WhatWeDo></WhatWeDo>
-        </div>
+      <div>
+        <Header></Header>
+        <FeaturedFoods></FeaturedFoods>
+        <Team></Team>
+        <WhatWeDo></WhatWeDo>
+      </div>
     );
 };
 

@@ -7,7 +7,7 @@ export default {
   theme: {
      extend: {
       fontFamily: {
-        //  roboto: "'Roboto Slab', serif", // Adds a new `font-roboto` class 
+         roboto: "'Roboto Slab', serif", // Adds a new `font-roboto` class 
         Raleway: "'Playfair Display', serif", // Adds a new `font-Raleway` class
       }},
   },

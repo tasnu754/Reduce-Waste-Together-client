@@ -20,7 +20,8 @@ const Signin = () => {
         .then((res) => {
           const user = res.user;
           console.log(user);
-           form.reset();
+          form.reset();
+         
         })
         .catch((error) => {
           setError(error.message);
@@ -117,7 +118,7 @@ const Signin = () => {
             <div className="md:text-lg font-medium text-gray-500 dark:text-gray-300">
               Not Signup?{" "}
               <Link
-                to="/signup"
+                to="/register"
                 className="text-[#623785] hover:underline dark:text-[#2a1839]"
               >
                 Create account

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthProvider } from "../../Auth/Authenticate";
 
 // https://i.ibb.co/Tvt8Nhy/ashton-bingham-EQFt-Ez-JGERg-unsplash.jpg 
+// https://i.ibb.co/c8nn8gV/ben-sweet-2-Lowvi-VHZ-E-unsplash.jpg 
 
 const Register = () => {
   const { register, ProfileUpdate } = useContext(AuthProvider);
@@ -20,10 +21,12 @@ const Register = () => {
       
       register(email, pass)
         .then((result) => {
+          location.reload();
           const user = result.user;
           console.log(user);
           ProfileUpdate(name, pic)
             .then(() => {
+
               console.log("Updated");
             })
             .catch((error) => {

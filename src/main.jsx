@@ -17,6 +17,7 @@ import Signin from './Pages/PublicRoutes/Signin';
 import Authenticate from './Auth/Authenticate';
 import PrivateRoute from './Components/PrivateRoute';
 import SingleFood from './Pages/PrivateRoutes/SingleFood';
+import { ChakraProvider } from '@chakra-ui/react';
 
 const router = createBrowserRouter([
   {
@@ -81,7 +82,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Authenticate>
-      <RouterProvider router={router} />
+      <ChakraProvider>
+        <RouterProvider router={router} />
+      </ChakraProvider>
     </Authenticate>
   </React.StrictMode>
 );

@@ -1,8 +1,65 @@
+import { useContext, useState } from "react";
+import { AuthProvider } from "../../Auth/Authenticate";
+import swal from "sweetalert";
+import axios from "axios";
+
 
 const AddFood = () => {
+    const [dateError, setDateError] = useState(false);
+    const { user } = useContext(AuthProvider);
+ 
 
-    const handleAddProduct = () => {
+    const donarEmail = user?.email;
+    const donarImg = user?.photoURL;
+    const donarName = user?.displayName;
+
+    const handleAddProduct = (e) => {
+        e.preventDefault();
+
+        setDateError(false);
+
+        const form = e.target;
+        const foodName = form.name.value;
+        const foodImageURL = form.image.value;
+        const foodQuantity = parseInt(form.quantity.value);
+        const pickupLocation = form.location.value;
+        const foodStatus = form.status.value;
+        const expiredDate = form.date.value;
+        const additionalNotes = form.note.value;
+
+        const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+        if (!datePattern.test(expiredDate)) {
+          return setDateError(true); 
+        }
+
+        const fooditem = {
+          foodName,
+          foodImageURL,
+          foodQuantity,
+          pickupLocation,
+          expiredDate,
+          additionalNotes,
+          foodStatus,
+          donarEmail,
+          donarImg,
+          donarName,
+        };
+
+        form.reset();
+        axios
+          .post("http://localhost:5000/api/addTheFood", fooditem)
+          .then((response) => {
+            console.log(response.data);
+            if (response.data.insertedId) {
+              swal("Food added!", "Successfully", "success");
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
         
+    
+         
     }
 
 
@@ -13,7 +70,7 @@ const AddFood = () => {
             <h2 className="mb-4 text-5xl font-bold text-[#53346D] dark:text-white text-center">
               Add Food
             </h2>
-            <form onSubmit={handleAddProduct} action="#">
+            <form onSubmit={handleAddProduct} >
               <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div className="sm:col-span-2">
                   <label
@@ -56,7 +113,7 @@ const AddFood = () => {
                     Quantity
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     name="quantity"
                     id="quantity"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
@@ -89,14 +146,16 @@ const AddFood = () => {
                     Expired Date
                   </label>
                   <input
-                    type="date"
+                    type="text"
                     name="date"
                     id="date"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    placeholder="Date"
+                    placeholder="yyyy-mm-dd"
                     required
                   />
+                  {dateError && <p className="text-red-500 mt-2">Please give valid date format <br />(yyyy-mm-dd)</p>}
                 </div>
+
                 <div className="w-full">
                   <label
                     htmlFor="text"
@@ -123,8 +182,8 @@ const AddFood = () => {
                     Additional Notes
                   </label>
                   <textarea
-                    name="des"
-                    id="description"
+                    name="note"
+                    id="note"
                     rows={5}
                     className="block p-2.5 w-full text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Your description here"

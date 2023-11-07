@@ -7,7 +7,7 @@ const AvailableFoods = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/availableFoods")
+      .get(`http://localhost:5000/api/availableFoods?sortDate=expiredDate`)
       .then((response) => {
         setFeaturedFoods(response.data);
         //   console.log(response);
@@ -15,7 +15,8 @@ const AvailableFoods = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [featuredFoods.expiredDate]);
+  console.log(featuredFoods);
   return (
     <div>
           <div className="w-full my-6">

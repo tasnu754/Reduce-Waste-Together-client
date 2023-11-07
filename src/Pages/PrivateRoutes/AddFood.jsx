@@ -1,9 +1,15 @@
 
 const AddFood = () => {
+
+    // const handleAddProduct = () => {
+        
+    // }
+
+
     return (
-        <div>
-            Add foods
-        </div>
+      <div>
+      
+      </div>
     );
 };
 

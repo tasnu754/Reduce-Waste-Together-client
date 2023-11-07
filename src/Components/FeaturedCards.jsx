@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 
 const FeaturedCards = ({ featuredFood }) => {
@@ -11,7 +12,7 @@ const FeaturedCards = ({ featuredFood }) => {
         <h2 className="text-center md:text-xl lg:text-2xl font-bold text-green-700">
           {featuredFood.foodName}
         </h2>
-        <div className="relative mx-4 mt-2 lg:mt-4 bg-cover overflow-hidden text-gray-700 bg-white shadow-2xl  rounded-xl bg-clip-border  lg:h-72">
+        <div className="relative mx-4 mt-2 lg:mt-4 bg-cover overflow-hidden text-gray-700 bg-white shadow-2xl  rounded-xl bg-clip-border  lg:h-64">
           <img
             className="object-cover w-full h-[100%]"
             src={featuredFood.foodImageURL}
@@ -53,10 +54,11 @@ const FeaturedCards = ({ featuredFood }) => {
             <span className="font-bold">Note :</span>{" "}
             {featuredFood.additionalNotes}
           </p>
-          <button className="btn btn-neutral w-full">View Details</button>
+          <Link to={`/singleFood/${featuredFood._id}`}>
+            <button className="btn btn-neutral w-full">View Details</button>
+          </Link>
         </div>
-          </div>
-         
+      </div>
     </div>
   );
 };

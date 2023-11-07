@@ -16,6 +16,7 @@ import MyFoodRequest from './Pages/PrivateRoutes/MyFoodRequest';
 import Signin from './Pages/PublicRoutes/Signin';
 import Authenticate from './Auth/Authenticate';
 import PrivateRoute from './Components/PrivateRoute';
+import SingleFood from './Pages/PrivateRoutes/SingleFood';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,15 @@ const router = createBrowserRouter([
         path: "/availableFoods",
         element: <AvailableFoods></AvailableFoods>,
       },
+      {
+        path: "/singleFood/:id",
+        element: (
+          <PrivateRoute>
+            <SingleFood></SingleFood>
+          </PrivateRoute>
+        )
+      },
+
       {
         path: "/register",
         element: <Register></Register>,

@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { format } from "date-fns";
 import { AuthProvider } from "../../Auth/Authenticate";
+import swal from "sweetalert";
 
 const SingleFood = () => {
   const [singleFood, setSingleFood] = useState({});
@@ -61,6 +62,21 @@ const SingleFood = () => {
       modal.close();
 
     }
+
+    axios
+      .post("http://localhost:5000/api/requestedFoods", requestedFood)
+      .then((response) => {
+        console.log(response.data);
+        if (response.data.insertedId) {
+          swal("Requested!", "Successfully", "success");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+
+
   }
      
 

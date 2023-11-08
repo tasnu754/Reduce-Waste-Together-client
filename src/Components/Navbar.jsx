@@ -82,9 +82,9 @@ const Navbar = () => {
 
 
     return (
-      <div className="px-10">
-        <div className="navbar bg-base-100">
-          <div className="navbar-start">
+      <div className="px-6  md:px-10">
+        <div className="md:navbar bg-base-100">
+          <div className=" flex mb-6 md:navbar-start">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
                 <svg
@@ -128,9 +128,9 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <div className="navbar-end">
+          <div className="flex  md:navbar-end">
             {user ? (
-              <div className="md:flex justify-between items-center gap-4">
+              <div className="flex-row-reverse justify-center md:flex-row flex md:justify-between items-center gap-2 md:gap-4">
                 <p className=" text-xl inline">{user.displayName}</p>
                 <img
                   className="w-10 h-10 rounded-full inline ml-4"

@@ -18,6 +18,7 @@ import Authenticate from './Auth/Authenticate';
 import PrivateRoute from './Components/PrivateRoute';
 import SingleFood from './Pages/PrivateRoutes/SingleFood';
 import { ChakraProvider } from '@chakra-ui/react';
+import UpdateFood from './Pages/PrivateRoutes/UpdateFood';
 
 const router = createBrowserRouter([
   {
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <SingleFood></SingleFood>
           </PrivateRoute>
-        )
+        ),
       },
 
       {
@@ -57,6 +58,16 @@ const router = createBrowserRouter([
             <AddFood></AddFood>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/update/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateFood></UpdateFood>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/singleFood/${params.id}`),
       },
 
       {

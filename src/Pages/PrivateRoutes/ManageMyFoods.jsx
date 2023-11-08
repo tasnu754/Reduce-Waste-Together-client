@@ -4,6 +4,7 @@ import axios from "axios";
 import { Button, Heading, Image, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import { useTable } from "react-table";
 import swal from "sweetalert";
+import { Link } from "react-router-dom";
 
 
 
@@ -44,7 +45,13 @@ const ManageMyFoods = () => {
       {
         Header: "Update",
         accessor: "update",
-        Cell: ({ row }) => <Button>Update</Button>,
+        Cell: ({ row }) => (
+          <Link to={`/update/${row.original._id}`}>
+            <Button>
+              Update
+            </Button>
+          </Link>
+        ),
       },
       {
         Header: "Delete",
@@ -77,9 +84,6 @@ const ManageMyFoods = () => {
         Cell: ({ row }) => <Button>Manage</Button>,
       },
     ];
-
-
-
 
     const columns = useMemo(()=>tableColumn ,[])
     const data = useMemo(() => manageFoods, [manageFoods]);
@@ -118,10 +122,14 @@ const ManageMyFoods = () => {
                 })
            
           }
-        }).catch(err=>console.log(err.message))
+        }).catch(err => console.log(err.message))
+      
+    
     }
 
-    console.log(manageFoods);
+  // console.log(manageFoods);
+  
+  
 
     return (
       <div className="w-[90%] mx-auto pb-10">

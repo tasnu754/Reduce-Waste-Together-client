@@ -8,7 +8,6 @@ const UpdateFood = () => {
     const [dateError, setDateError] = useState(false);
     const { user } = useContext(AuthProvider);
     const upFooditem = useLoaderData();
-    console.log(upFooditem);
  
 
     const donarEmail = user?.email;

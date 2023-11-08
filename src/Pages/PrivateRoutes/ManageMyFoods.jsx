@@ -5,6 +5,7 @@ import { Button, Heading, Image, Table, Tbody, Td, Th, Thead, Tr } from "@chakra
 import { useTable } from "react-table";
 import swal from "sweetalert";
 import { Link } from "react-router-dom";
+import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 
 
 
@@ -47,9 +48,7 @@ const ManageMyFoods = () => {
         accessor: "update",
         Cell: ({ row }) => (
           <Link to={`/update/${row.original._id}`}>
-            <Button>
-              Update
-            </Button>
+            <EditIcon className="text-2xl">Update</EditIcon>
           </Link>
         ),
       },
@@ -57,31 +56,17 @@ const ManageMyFoods = () => {
         Header: "Delete",
         accessor: "delete",
         Cell: ({ row }) => (
-          <button
-            onClick={() => handleDelete(row.original._id)}
-            className="btn btn-square btn-outline"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
+          <DeleteIcon className="text-2xl" onClick={() => handleDelete(row.original._id)}></DeleteIcon>
         ),
       },
       {
-        Header: "Manage",
+        Header: "Manage Food",
         accessor: "manage",
-        Cell: ({ row }) => <Button>Manage</Button>,
+        Cell: ({ row }) => (
+          <Link to={`/manageFoods/${row.original._id}`}>
+            <Button>Manage</Button>
+          </Link>
+        ),
       },
     ];
 
@@ -112,12 +97,13 @@ const ManageMyFoods = () => {
                         console.log(res);
                         if (res.data.deletedCount > 0) {
                             const remain = manageFoods.filter(food => food._id != id);
-                            setManageFoods(remain)
+                           
                           swal(
                             "Deleted!",
                             "Your imaginary file has been deleted!",
                             "success"
                           );
+                           setManageFoods(remain);
                         }
                 })
            

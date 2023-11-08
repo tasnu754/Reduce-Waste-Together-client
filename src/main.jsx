@@ -19,6 +19,7 @@ import PrivateRoute from './Components/PrivateRoute';
 import SingleFood from './Pages/PrivateRoutes/SingleFood';
 import { ChakraProvider } from '@chakra-ui/react';
 import UpdateFood from './Pages/PrivateRoutes/UpdateFood';
+import ManageSingleFood from './Pages/PrivateRoutes/ManageSingleFood';
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,12 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/api/singleFood/${params.id}`),
+      },
+      {
+        path: "/manageFoods/:id",
+        element: <PrivateRoute>
+          <ManageSingleFood></ManageSingleFood>
+        </PrivateRoute>
       },
 
       {

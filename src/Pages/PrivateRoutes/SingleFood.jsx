@@ -6,10 +6,19 @@ import { AuthProvider } from "../../Auth/Authenticate";
 import swal from "sweetalert";
 
 const SingleFood = () => {
+
   const [singleFood, setSingleFood] = useState({});
   const { id } = useParams();
   const { user } = useContext(AuthProvider);
-  
+  const [sameUser, setSameUser] = useState(false);
+   
+  if (sameUser) {
+    const modal = document.getElementById("my_modal_5");
+       if (modal) {
+         modal.close();
+       }
+    swal("You can`t request your own food!", "Warning", "warning");
+  }
 
 
 
@@ -31,30 +40,40 @@ const SingleFood = () => {
   const handleRequest = (e) => {
       
     e.preventDefault();
+
+     if (user?.email === singleFood?.donarEmail) {
+       
+       return setSameUser(!sameUser);
+     }
     const donatMoney = parseInt(e.target.money.value) || 0;
     const additionalNotes = e.target.note.value;
     const today = new Date();
-    const requestDate = format(today, "yyyy-MM-dd");
+    const requestDate = format(today, "yyyy-MM-dd HH:mm:ss");
     const foodName = singleFood.foodName;
     const foodImageURL = singleFood.foodImageURL;
-    // const _id = singleFood._id;
+    const foodId = singleFood._id;
     const pickupLocation = singleFood.pickupLocation;
     const expiredDate = singleFood.expiredDate;
     const donarName = singleFood.donarName;
     const donarEmail = singleFood.donarEmail;
-    const userEmail = user.email
+    const requesterEmail = user.email; 
+    const requesterName = user.displayName; 
+    const requesterPhoto = user.photoURL; 
 
     const requestedFood = {
       foodName,
       foodImageURL,
       donarName,
       donarEmail,
-      userEmail,
+      requesterPhoto,
+      requesterName,
+      requesterEmail,
       requestDate,
       pickupLocation,
       expiredDate,
       additionalNotes,
       donatMoney,
+      foodId,
     };
     e.target.reset();
     const modal = document.getElementById("my_modal_5");

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthProvider } from "../Auth/Authenticate";
-
+import { motion } from "framer-motion";
 const Navbar = () => {
   const { user, logout } = useContext(AuthProvider);
 
@@ -117,10 +117,13 @@ const Navbar = () => {
                   alt=""
                 />
               </div>
-              <p className=" normal-case text-xl font-bold">
+              <motion.p
+                animate={{ fontSize: "24px", color: "#273d52" }}
+                className=" normal-case text-sm font-bold "
+              >
                 Reduce Waste <br />
                 <span>Together</span>
-              </p>
+              </motion.p>
             </div>
           </div>
           <div className="navbar-center hidden lg:flex">

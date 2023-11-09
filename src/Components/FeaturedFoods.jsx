@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import FeaturedCards from "./FeaturedCards";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const FeaturedFoods = () => {
     const [featuredFoods, setFeaturedFoods] = useState([]);
@@ -25,7 +26,7 @@ const FeaturedFoods = () => {
       </div>
       <div className="text-center my-10">
        { featuredFoods?.length > 6 &&  <Link to="/availableFoods">
-          <button className="btn btn-outline btn-primary">Show All</button>
+          <motion.button animate={{rotate:360 , scale:1.5}} className="btn btn-outline btn-primary">Show All</motion.button>
         </Link>}
       </div>
     </div>

@@ -8,17 +8,21 @@ const MyFoodRequest = () => {
     const [myFoodReg, setMyFoodReq] = useState([]);
     const { user } = useContext(AuthProvider);
     const [loading, setLoading] = useState(true);
+    const [err, setErr] = useState(false);
     
         useEffect(() => {
           axios
             .get(
-              `http://localhost:5000/api/requestedFoods?requesterEmail=${user.email}`
+              `http://localhost:5000/api/requestedFoods?requesterEmail=${user.email}` , {withCredentials:true}
             )
               .then((res) => {
                   setMyFoodReq(res.data);
                   setLoading(false)
               })
-            .catch((err) => console.log(err.message));
+              .catch((err) => {
+                  setErr(true);
+                  console.log(err.message)
+              });
         }, [user.email]);
     
     const handleCancelReq = (id) => {
@@ -58,49 +62,58 @@ const MyFoodRequest = () => {
     
     
     return (
-
       <div>
-        {loading ? (
-          <p className="text-center my-10">
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.200"
-              color="blue.500"
-              size="xl"
-            />
-          </p>
+        {err ? (
+          <h3 className="text-center font-bold py-10 text-3xl">Not Valid Token</h3>
         ) : (
-          <div className="w-[90%] lg:w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-10 place-content-center">
-            {myFoodReg.length === 0 ? (
-              <h2>No food Requested yet</h2>
+          <div>
+            {loading ? (
+              <p className="text-center my-10">
+                <Spinner
+                  thickness="4px"
+                  speed="0.65s"
+                  emptyColor="gray.200"
+                  color="blue.500"
+                  size="xl"
+                />
+              </p>
             ) : (
-              myFoodReg?.map((food) => (
-                <div className="card glass" key={food._id}>
-                  <div className="card-body">
-                    <h2 className="card-title">Donor: {food.donorName}</h2>
-                    <p className="font-bold">
-                      Pickup Location: {food.pickupLocation}
-                    </p>
-                    <p className="font-bold">Expired In: {food.expiredDate}</p>
-                    <p className="font-bold">
-                      Requested Date: {food.requestDate}
-                    </p>
-                    <p className="font-bold">
-                      Your Donation Amount: $
-                      {food.donatMoney !== 0 ? food.donatMoney : "No donation"}
-                    </p>
-                    <div className="card-actions justify-center mt-6">
-                      <button
-                        onClick={() => handleCancelReq(food._id)}
-                        className="btn btn-accent"
-                      >
-                        Cancel Request
-                      </button>
+              <div className="w-[90%] lg:w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-10 place-content-center">
+                {myFoodReg.length === 0 ? (
+                  <h2>No food Requested yet</h2>
+                ) : (
+                  myFoodReg?.map((food) => (
+                    <div className="card glass" key={food._id}>
+                      <div className="card-body">
+                        <h2 className="card-title">Donor: {food.donorName}</h2>
+                        <p className="font-bold">
+                          Pickup Location: {food.pickupLocation}
+                        </p>
+                        <p className="font-bold">
+                          Expired In: {food.expiredDate}
+                        </p>
+                        <p className="font-bold">
+                          Requested Date: {food.requestDate}
+                        </p>
+                        <p className="font-bold">
+                          Your Donation Amount: $
+                          {food.donatMoney !== 0
+                            ? food.donatMoney
+                            : "No donation"}
+                        </p>
+                        <div className="card-actions justify-center mt-6">
+                          <button
+                            onClick={() => handleCancelReq(food._id)}
+                            className="btn btn-accent"
+                          >
+                            Cancel Request
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              ))
+                  ))
+                )}
+              </div>
             )}
           </div>
         )}

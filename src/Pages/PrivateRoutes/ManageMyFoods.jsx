@@ -13,7 +13,8 @@ import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 const ManageMyFoods = () => {
     const [manageFoods, setManageFoods] = useState([]);
   const { user } = useContext(AuthProvider);
-     const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState(false);
 
 
     const tableColumn = [
@@ -80,12 +81,15 @@ const ManageMyFoods = () => {
     })
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/availableFoods?donarEmail=${user.email}`)
+        axios.get(`http://localhost:5000/api/availableFoods?donarEmail=${user.email}` , {withCredentials:true})
           .then(res => {
             setManageFoods(res.data)
             setLoading(false);
           })
-        .catch(err=>console.log(err.message))
+          .catch(err => {
+            setErr(true);
+            console.log(err.message)
+          })
     }, [user.email])
     
     const handleDelete = (id) => {
@@ -120,48 +124,60 @@ const ManageMyFoods = () => {
 
     return (
       <div>
-        {loading ? (
-          <p className="text-center my-10">
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.200"
-              color="blue.500"
-              size="xl"
-            />
-          </p>
+        {err ? (
+          <h3 className="text-center font-bold py-10 text-3xl">
+            Not Valid Token
+          </h3>
         ) : (
-          <div className="w-[90%] mx-auto pb-10">
-            <Heading className="text-center my-6 text-teal-700">
-              Food Table : {manageFoods.length} Food Items
-            </Heading>
-            <Table {...getTableProps()} variant="striped" colorScheme="teal">
-              <Thead>
-                {headerGroups?.map((headerGroup, idx) => (
-                  <Tr key={idx} {...headerGroup.getHeaderGroupProps()}>
-                    {headerGroup.headers?.map((column, idx) => (
-                      <Th key={idx} {...column.getHeaderProps()}>
-                        {column.render("Header")}
-                      </Th>
+          <div>
+            {loading ? (
+              <p className="text-center my-10">
+                <Spinner
+                  thickness="4px"
+                  speed="0.65s"
+                  emptyColor="gray.200"
+                  color="blue.500"
+                  size="xl"
+                />
+              </p>
+            ) : (
+              <div className="w-[90%] mx-auto pb-10">
+                <Heading className="text-center my-6 text-teal-700">
+                  Food Table : {manageFoods.length} Food Items
+                </Heading>
+                <Table
+                  {...getTableProps()}
+                  variant="striped"
+                  colorScheme="teal"
+                >
+                  <Thead>
+                    {headerGroups?.map((headerGroup, idx) => (
+                      <Tr key={idx} {...headerGroup.getHeaderGroupProps()}>
+                        {headerGroup.headers?.map((column, idx) => (
+                          <Th key={idx} {...column.getHeaderProps()}>
+                            {column.render("Header")}
+                          </Th>
+                        ))}
+                      </Tr>
                     ))}
-                  </Tr>
-                ))}
-              </Thead>
-              <Tbody {...getTableBodyProps()}>
-                {rows?.map((row, idx) => {
-                  prepareRow(row);
-                  return (
-                    <Tr key={idx} {...row.getRowProps()}>
-                      {row.cells?.map((cell, idx) => (
-                        <Td key={idx} {...cell.getCellProps}>
-                          {cell.render("Cell")}
-                        </Td>
-                      ))}
-                    </Tr>
-                  );
-                })}
-              </Tbody>
-            </Table>
+                  </Thead>
+                  <Tbody {...getTableBodyProps()}>
+                    {rows?.map((row, idx) => {
+                      prepareRow(row);
+                      return (
+                        <Tr key={idx} {...row.getRowProps()}>
+                          {row.cells?.map((cell, idx) => (
+                            <Td key={idx} {...cell.getCellProps}>
+                              {cell.render("Cell")}
+                            </Td>
+                          ))}
+                        </Tr>
+                      );
+                    })}
+                  </Tbody>
+                </Table>
+              </div>
+            )}
           </div>
         )}
       </div>

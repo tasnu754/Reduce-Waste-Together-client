@@ -9,7 +9,7 @@ const AvailableFoods = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/availableFoods?sortDate=expiredDate`)
+      .get(`http://localhost:5000/api/availableFoods?sortDate=expiredDate&veri=true`)
       .then((response) => {
         setFeaturedFoods(response.data);
         setLoading(false);

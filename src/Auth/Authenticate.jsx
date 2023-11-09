@@ -54,27 +54,33 @@ const Authenticate = ({ children }) => {
 
     useEffect(() => {
       const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-          setUser(currentUser);
-          setLoading(false);
-        
+        const userEmail = currentUser?.email || user?.email;
+        const loggedUser = { email: userEmail };
+
+        setUser(currentUser);
+        setLoading(false);
+
         if (currentUser) {
-           const loggedUser = {
-            email: currentUser.email
-          };
-
-          axios.post("http://localhost:5000/api/jwt", loggedUser, {
-            withCredentials:true
-          })
-          .then(res => console.log(res.data))
-          .catch(err=>console.log(err.message))
-
+          axios
+            .post("http://localhost:5000/api/jwt", loggedUser, {
+              withCredentials: true,
+            })
+            .then((res) => console.log(res.data))
+            .catch((err) => console.log(err.message));
+        } else {
+          axios
+            .post("http://localhost:5000/api/logout", loggedUser, {
+              withCredentials: true,
+            })
+            .then((res) => console.log(res.data))
+            .catch((err) => console.log(err.message));
         }
       });
 
       return () => {
         unSubscribe();
       };
-    }, []);
+    }, [user?.email]);
 
 
     const info = {

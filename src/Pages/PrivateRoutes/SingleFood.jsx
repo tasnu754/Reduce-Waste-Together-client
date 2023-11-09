@@ -100,13 +100,13 @@ const SingleFood = () => {
      
 
     return (
-      <div className="flex gap-6 p-6">
-        <div className="w-1/2 ">
-          <img className="rounded-none" src={singleFood.foodImageURL} alt="" />
+      <div className="lg:flex gap-6 p-6">
+        <div className="lg:w-1/2 text-center">
+          <img className="rounded-none mb-6" src={singleFood.foodImageURL} alt="" />
         </div>
 
-        <div className=" w-1/2 ">
-          <div className="space-y-6">
+        <div className=" lg:w-1/2 ">
+          <div className="space-y-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1">
             <div>
               <h2 className=" underline text-2xl font-bold mb-4">
                 Donar Information:
@@ -147,8 +147,8 @@ const SingleFood = () => {
             </div>
           </div>
 
-          <div className=" w-[50%] mx-auto mt-14 ">
-            <div className="border-2 border-black rounded-lg h-[120px] space-y-4  px-4 py-2 text-center">
+          <div className=" md:w-[50%] mx-auto mt-14 ">
+            <div className="border-2 border-black rounded-lg md:h-[120px] space-y-4  px-4 py-2 text-center">
               <h2 className="text-center text-xl font-bold text-black">
                 Request For The Food
               </h2>

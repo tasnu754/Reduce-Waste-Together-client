@@ -81,7 +81,7 @@ const ManageMyFoods = () => {
     })
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/availableFoods?donarEmail=${user.email}` , {withCredentials:true})
+        axios.get(`https://reduce-waste-together-server.vercel.app/api/availableFoods?donarEmail=${user.email}` , {withCredentials:true})
           .then(res => {
             setManageFoods(res.data)
             setLoading(false);
@@ -100,7 +100,7 @@ const ManageMyFoods = () => {
           dangerMode: true,
         }).then((willDelete) => {
             if (willDelete) {
-                axios.delete(`http://localhost:5000/api/availableFoods/${id}`)
+                axios.delete(`https://reduce-waste-together-server.vercel.app/api/availableFoods/${id}`)
                     .then(res => {
                         console.log(res);
                         if (res.data.deletedCount > 0) {

@@ -47,7 +47,7 @@ const AddFood = () => {
 
         form.reset();
         axios
-          .post("http://localhost:5000/api/addTheFood", fooditem )
+          .post("https://reduce-waste-together-server.vercel.app/api/addTheFood", fooditem )
           .then((response) => {
             console.log(response.data);
             if (response.data.insertedId) {

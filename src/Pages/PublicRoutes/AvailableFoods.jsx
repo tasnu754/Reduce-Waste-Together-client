@@ -9,7 +9,7 @@ const AvailableFoods = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/availableFoods?sortDate=expiredDate&veri=true`)
+      .get(`https://reduce-waste-together-server.vercel.app/api/availableFoods2?sortDate=expiredDate&veri=true`)
       .then((response) => {
         setFeaturedFoods(response.data);
         setLoading(false);

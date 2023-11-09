@@ -26,7 +26,7 @@ const SingleFood = () => {
   useEffect(() => {
     const userEmail = { email: user.email };
     axios
-      .get(`http://localhost:5000/api/singleFood/${id}`, {
+      .get(`https://reduce-waste-together-server.vercel.app/api/singleFood/${id}`, {
         params: userEmail,
         withCredentials: true,
       })
@@ -88,7 +88,7 @@ const SingleFood = () => {
     }
 
     axios
-      .post("http://localhost:5000/api/requestedFoods", requestedFood)
+      .post("https://reduce-waste-together-server.vercel.app/api/requestedFoods", requestedFood)
       .then((response) => {
         console.log(response.data);
         if (response.data.insertedId) {

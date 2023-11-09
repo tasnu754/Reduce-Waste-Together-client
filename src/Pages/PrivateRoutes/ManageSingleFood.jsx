@@ -14,11 +14,11 @@ const ManageSingleFood = () => {
 
     useEffect(() => {
          axios
-           .get("http://localhost:5000/api/availableFoods")
+           .get("https://reduce-waste-together-server.vercel.app/api/availableFoods")
            .then((res) => setAllFoods(res.data))
            .catch((err) => console.log(err.message));
       axios
-        .get(`http://localhost:5000/api/requestedFoods/${id}`)
+        .get(`https://reduce-waste-together-server.vercel.app/api/requestedFoods/${id}`)
           .then((res) => {
             // console.log(res.data);
           setManageReqFoods(res.data);
@@ -38,7 +38,7 @@ const ManageSingleFood = () => {
      .then((willDelete) => {
        if (willDelete) {
          axios
-           .delete(`http://localhost:5000/api/delivered/${id}`)
+           .delete(`https://reduce-waste-together-server.vercel.app/api/delivered/${id}`)
            .then((res) => {
              console.log(res);
              if (res.data.result1.deletedCount > 0) {

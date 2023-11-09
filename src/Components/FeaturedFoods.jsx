@@ -8,7 +8,7 @@ const FeaturedFoods = () => {
     const [featuredFoods, setFeaturedFoods] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/availableFoods?sortField=foodQuantity&sortOrder=desc&veri=true`)
+      .get(`https://reduce-waste-together-server.vercel.app/api/availableFoods2?sortField=foodQuantity&sortOrder=desc&veri=true`)
       .then((response) => {
         setFeaturedFoods(response.data);
         //   console.log(response);

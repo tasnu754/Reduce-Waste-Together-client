@@ -49,7 +49,7 @@ const UpdateFood = () => {
     //   form.reset();
       axios
         .put(
-          `http://localhost:5000/api/availableFoods/update/${upFooditem._id}`,
+          `https://reduce-waste-together-server.vercel.app/api/availableFoods/update/${upFooditem._id}`,
           updateFooditem
         )
         .then((response) => {

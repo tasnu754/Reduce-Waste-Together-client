@@ -68,7 +68,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/singleFood/${params.id}`),
+          fetch(`https://reduce-waste-together-server.vercel.app/api/singleFood/${params.id}`),
       },
       {
         path: "/manageFoods/:id",

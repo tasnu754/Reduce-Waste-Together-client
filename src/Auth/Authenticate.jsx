@@ -62,14 +62,14 @@ const Authenticate = ({ children }) => {
 
         if (currentUser) {
           axios
-            .post("http://localhost:5000/api/jwt", loggedUser, {
+            .post("https://reduce-waste-together-server.vercel.app/api/jwt", loggedUser, {
               withCredentials: true,
             })
             .then((res) => console.log(res.data))
             .catch((err) => console.log(err.message));
         } else {
           axios
-            .post("http://localhost:5000/api/logout", loggedUser, {
+            .post("https://reduce-waste-together-server.vercel.app/api/logout", loggedUser, {
               withCredentials: true,
             })
             .then((res) => console.log(res.data))

@@ -13,7 +13,7 @@ const MyFoodRequest = () => {
         useEffect(() => {
           axios
             .get(
-              `http://localhost:5000/api/requestedFoods?requesterEmail=${user.email}` , {withCredentials:true}
+              `https://reduce-waste-together-server.vercel.app/api/requestedFoods?requesterEmail=${user.email}` , {withCredentials:true}
             )
               .then((res) => {
                   setMyFoodReq(res.data);
@@ -37,7 +37,7 @@ const MyFoodRequest = () => {
                     if (willDelete) {
                       axios
                         .delete(
-                          `http://localhost:5000/api/requestedFoods/${id}`
+                          `https://reduce-waste-together-server.vercel.app/api/requestedFoods/${id}`
                         )
                         .then((res) => {
                           console.log(res);

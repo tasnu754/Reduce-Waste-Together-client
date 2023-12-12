@@ -1,8 +1,6 @@
 
 Client side Live link: https://reduce-waste-together.web.app
 
-
-
 **About My project**
 
 Elevate humanity with our food charity platform, 

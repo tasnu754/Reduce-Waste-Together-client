@@ -3,9 +3,12 @@ Client side Live link: https://reduce-waste-together.web.app
 
 
 
+**About My project**
 
+Elevate humanity with our food charity platform, 
+fostering kindness and connection through seamless food donations,
+user-friendly interfaces, and secure, token-verified interactions.
 
-** Five project features **
 
 * In my project, I have implemented mongodb crud operation anf json web token. Verify the token if requested user is valid user or not.
 * The show all button is funtional. In the home page , I have shown only six items. When user clicked on show all button they will redirected to available food page where all items are shown.
